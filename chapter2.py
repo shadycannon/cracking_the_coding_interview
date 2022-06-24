@@ -13,6 +13,14 @@ class LinkedList:
     def __init__(self):
         self.headval = None
 
+    def print(self):
+        node = self.headval
+        ret_str = ''
+        while node:
+            ret_str += f'{node.data} -> '
+            node = node.next
+        print(ret_str[:-4])
+
 
 def problem1(ll: LinkedList) -> LinkedList:
     """Write code to remove duplicates from a Linkedlist
@@ -97,7 +105,7 @@ def problem4(ll: LinkedList, x: int) -> LinkedList:
         node = node.next
 
     node_before.next = list_after.headval
-    print_ll(list_before)
+
     return list_before
 
 
@@ -207,13 +215,7 @@ def problem7(ll: LinkedList) -> bool:
     return recurse_palindrome(length, ll.headval)[1]
 
 
-def print_ll(ll):
-    node = ll.headval
-    ret_str = ''
-    while node:
-        ret_str += f'{node.data} -> '
-        node = node.next
-    print(ret_str[:-4])
+
 
 
 if __name__ == "__main__":
@@ -259,15 +261,13 @@ if __name__ == "__main__":
     cn3.next = cn4
     cn4.next = cn5
     cn5.next = cn3
-
-
-    print_ll(ll)
-    print_ll(problem1(ll))
+    ll.print()
+    problem1(ll).print()
     print(problem2(ll, 4).data)
     problem3(n3)
     problem4(ll, 8)
     print(turnLinkedListToAnInt(ll1))
-    print_ll(problem5(ll1, ll2))
+    problem5(ll1, ll2).print()
     print(problem6(cll).data)
     print(problem7(ll))
 
